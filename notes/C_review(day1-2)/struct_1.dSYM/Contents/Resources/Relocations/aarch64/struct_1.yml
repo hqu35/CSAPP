@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/ququ/CSAPP/notes/C_review(day1-2)/struct_1'
+relocations:     []
+...

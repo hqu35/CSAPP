@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f6f2"><title>CS229 · Daily study panel</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="schedule.js"></script><script defer src="model.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<main class="shell">
+<header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true">m<span>l</span></span><span>CS229 <span class="muted">/ Study panel</span></span></div><time id="clock"></time></header>
+<section class="intro"><div><p class="eyebrow">SEPTEMBER 19 — DECEMBER 20, 2026</p><h1>ML Fundamentals<span class="period">.</span></h1><p class="subtitle">One day at a time. Math when you need it.</p></div><div class="deadline"><span class="status-dot"></span><span>Final mastery <strong>Dec 20</strong></span></div></section>
+<section class="overview" aria-label="Current status">
+<div class="overview-item"><p class="eyebrow">CURRENT PHASE <span id="current-phase-number"></span></p><p id="current-phase" class="stat-text"></p></div>
+<div class="overview-item"><p class="eyebrow">CURRENT TOPIC</p><p id="current-topic" class="stat-text"></p></div>
+<div class="overview-item overall"><div class="progress-heading"><p class="eyebrow">OVERALL PROGRESS</p><strong id="overall-percent"></strong></div><progress id="overall-bar" max="93" value="0" aria-label="Overall completion"></progress><p id="overall-count" class="small muted"></p></div>
+</section>
+<section class="week-panel" aria-label="Weekly schedule"><div class="section-bar"><div><h2>Week at a glance</h2><span id="week-range" class="small muted"></span></div><nav class="week-nav" aria-label="Schedule navigation"><button id="prev-week" class="icon-btn" aria-label="Previous week">‹</button><button id="today" class="quiet-btn">Today</button><button id="next-week" class="icon-btn" aria-label="Next week">›</button><label class="date-picker"><span class="sr-only">Go to date</span><input id="date-picker" type="date" min="2026-09-19" max="2026-12-20" aria-label="Go to date"></label></nav></div><div id="week" class="week-grid"></div><div class="week-legend"><span><i class="legend-dot core"></i>ML session</span><span><i class="legend-dot buffer"></i>CSAPP priority / buffer</span><span><i class="legend-dot catchup"></i>Catch-up</span><span id="backlog"></span></div></section>
+<div class="content-grid">
+<article class="today-card" aria-labelledby="day-title"><div id="day-content"></div></article>
+<aside class="side-panel"><section class="phase-panel"><div class="section-bar"><h2>Phase progress</h2><span class="small muted">7 phases</span></div><div id="phases"></div><div class="session-totals" id="session-totals"></div></section><section class="milestone-panel"><div class="section-bar"><h2>Milestones</h2><span class="small muted">Fixed dates</span></div><div id="milestones"></div></section></aside>
+</div>
+<footer><span>Daily plan · 93 scheduled days · Original task order</span><span id="storage-status" role="status">Progress saved on this browser</span></footer>
+</main><div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body></html>

@@ -1,0 +1,124 @@
+Extracted 93 days, 7 milestones, 12 final questions.
+2026-09-19 Math + Core Foundations: linear/logistic regression, GLMs | 5 tasks | Use current CS229 supervised-learning notes around LMS/gradient descent; do not restart the whole lecture.
+2026-09-20 Core Lecture Foundations: linear/logistic regression, GLMs | 5 tasks | Watch Autumn 2018 Lecture 2 (Andrew Ng): supervised learning setup and linear regression.
+2026-09-21 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-09-22 Core Lecture Foundations: linear/logistic regression, GLMs | 5 tasks | Finish the linear-regression material from A18-L2.
+2026-09-23 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-09-24 Practice / Lab Foundations: linear/logistic regression, GLMs | 5 tasks | Implement vectorized linear regression loss and gradient in NumPy.
+2026-09-25 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 4 tasks | CSAPP priority + ML buffer day.
+2026-09-26 Core Lecture Foundations: linear/logistic regression, GLMs | 5 tasks | Watch the weighted-least-squares and logistic-regression portion of Autumn 2018 Lecture 3.
+2026-09-27 Math Patch Foundations: linear/logistic regression, GLMs | 5 tasks | Formal review: random variable, PMF vs PDF, joint/marginal/conditional probability, independence.
+2026-09-28 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-09-29 Core Lecture Foundations: linear/logistic regression, GLMs | 5 tasks | Watch the Newton-method portion of Autumn 2018 Lecture 3; treat perceptron as conceptual contrast, not a major branch.
+2026-09-30 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-10-01 Core Lecture Foundations: linear/logistic regression, GLMs | 5 tasks | Finish the exponential-family and GLM portion of A18-L3; use Fall 2025 Lecture 4 notes as the modern topic map.
+2026-10-02 CSAPP Priority / Buffer Foundations: linear/logistic regression, GLMs | 4 tasks | CSAPP priority + ML buffer day.
+2026-10-03 Practice / PSet Foundations: linear/logistic regression, GLMs | 5 tasks | Complete all PSet 1 derivation questions whose prerequisites are now covered.
+2026-10-04 Practice / Lab Foundations: linear/logistic regression, GLMs | 5 tasks | Implement logistic loss/log-likelihood and its gradient from scratch.
+2026-10-05 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-10-06 Core Lecture Probabilistic models, SVM, learning theory | 5 tasks | Watch Autumn 2018 Lecture 8 sections on bias-variance, regularization, and model selection; use Fall 2025 Lecture 5 notes as the modern checklist.
+2026-10-07 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-10-08 Math Patch Probabilistic models, SVM, learning theory | 5 tasks | Review expectation, variance, covariance, covariance matrix, correlation, and independence distinctions.
+2026-10-09 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 4 tasks | CSAPP priority + ML buffer day.
+2026-10-10 Core Lecture Probabilistic models, SVM, learning theory | 5 tasks | Watch Autumn 2018 Lecture 5 material on Gaussian Discriminant Analysis and Naive Bayes; align with Fall 2025 Lecture 6.
+2026-10-11 Practice / PSet Probabilistic models, SVM, learning theory | 5 tasks | Work through Naive Bayes conditional-independence factorization.
+2026-10-12 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-10-13 Core Lecture Probabilistic models, SVM, learning theory | 5 tasks | Watch the SVM material spanning Autumn 2018 Lectures 6-7; use Fall 2025 Lecture 7 as the scope target.
+2026-10-14 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-10-15 Core Lecture Probabilistic models, SVM, learning theory | 5 tasks | Finish the kernel portion of Autumn 2018 Lecture 7.
+2026-10-16 CSAPP Priority / Buffer Probabilistic models, SVM, learning theory | 4 tasks | CSAPP priority + ML buffer day.
+2026-10-17 Math + Theory Probabilistic models, SVM, learning theory | 5 tasks | Review Lagrangian intuition: objective, constraints, multipliers; only enough to read the SVM dual/KKT story.
+2026-10-18 Practice / PSet Probabilistic models, SVM, learning theory | 5 tasks | Finish PSet 2 or the corresponding generative/SVM assignment in your source version.
+2026-10-19 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-10-20 Core Lecture Unsupervised learning, trees, boosting | 5 tasks | Watch Autumn 2018 Lecture 13 for K-means, mixture of Gaussians, and EM; use Fall 2025 Lecture 8 as the modern scope check.
+2026-10-21 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-10-22 Math Patch Unsupervised learning, trees, boosting | 5 tasks | Review convex/concave functions and Jensen inequality.
+2026-10-23 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 4 tasks | CSAPP priority + ML buffer day.
+2026-10-24 Practice / Lab Unsupervised learning, trees, boosting | 5 tasks | Implement initialization, assignment, centroid-update, and convergence criterion.
+2026-10-25 Practice / Lab Unsupervised learning, trees, boosting | 5 tasks | Implement or hand-code a minimal 1D/2D GMM EM loop: responsibilities, means, variances/covariances, mixture weights.
+2026-10-26 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-10-27 Core Lecture Unsupervised learning, trees, boosting | 5 tasks | Use Fall 2025 Lecture 9 as primary content.
+2026-10-28 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-10-29 Core Lecture Unsupervised learning, trees, boosting | 5 tasks | Use Fall 2025 Lecture 10 as primary content; consult A18 tree-ensemble material only if useful.
+2026-10-30 CSAPP Priority / Buffer Unsupervised learning, trees, boosting | 4 tasks | CSAPP priority + ML buffer day.
+2026-10-31 Practice / Evaluation Unsupervised learning, trees, boosting | 5 tasks | Study Fall 2025 TA evaluation-metrics material or equivalent notes.
+2026-11-01 Practice / PSet Unsupervised learning, trees, boosting | 5 tasks | Finish all PSet 3 questions on unsupervised learning, trees, boosting, or evaluation that are currently covered.
+2026-11-02 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-11-03 Core Lecture Neural networks, backprop, ML advice | 5 tasks | Use Fall 2025 Lecture 11 as primary content.
+2026-11-04 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-11-05 Math Patch Neural networks, backprop, ML advice | 5 tasks | Return to DJ notation, Jacobian matrices, gradients of scalar-valued functions, and composition.
+2026-11-06 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 4 tasks | CSAPP priority + ML buffer day.
+2026-11-07 Core Lecture Neural networks, backprop, ML advice | 5 tasks | Use Fall 2025 Lecture 12 as primary content.
+2026-11-08 Practice / Lab Neural networks, backprop, ML advice | 5 tasks | Implement forward pass, scalar loss, backward pass, and parameter update with NumPy only.
+2026-11-09 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-11-10 Theory Neural networks, backprop, ML advice | 5 tasks | Use Summer 2020 Lectures 12-13 to make the classical learning-theory foundation explicit.
+2026-11-11 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-11-12 Core Lecture Neural networks, backprop, ML advice | 5 tasks | Use Fall 2025 Lecture 13 as primary content; optionally compare Andrew Ng 2018 practical-advice material.
+2026-11-13 CSAPP Priority / Buffer Neural networks, backprop, ML advice | 4 tasks | CSAPP priority + ML buffer day.
+2026-11-14 Modern Bridge Neural networks, backprop, ML advice | 5 tasks | Use the Fall 2025 deep-learning/ConvNet TA lecture as a bridge, not a full CV course.
+2026-11-15 Review / PSet Neural networks, backprop, ML advice | 5 tasks | Attempt all currently-covered PSet 4 questions.
+2026-11-16 CSAPP Priority / Buffer Reinforcement learning and PCA | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-11-17 Core Lecture Reinforcement learning and PCA | 5 tasks | Use Fall 2025 Lecture 14 as scope; use Andrew 2018 Lecture 16 if you want the classical derivation style.
+2026-11-18 CSAPP Priority / Buffer Reinforcement learning and PCA | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-11-19 Core Lecture Reinforcement learning and PCA | 5 tasks | Use Fall 2025 Lecture 15 as the required scope; consult Andrew 2018 Lectures 17- 18 for classical detail.
+2026-11-20 CSAPP Priority / Buffer Reinforcement learning and PCA | 4 tasks | CSAPP priority + ML buffer day.
+2026-11-21 Practice / Lab Reinforcement learning and PCA | 5 tasks | Implement a tiny finite MDP with explicit transition probabilities and rewards.
+2026-11-22 Practice / PSet Reinforcement learning and PCA | 5 tasks | Finish currently-covered RL questions in PSet 4.
+2026-11-23 CSAPP Priority / Buffer Reinforcement learning and PCA | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-11-24 Core Lecture Reinforcement learning and PCA | 5 tasks | Use Andrew 2018 Lecture 15 for classical PCA intuition; align with Fall 2025 Lecture 16 scope.
+2026-11-25 CSAPP Priority / Buffer Reinforcement learning and PCA | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-11-26 Light Math / Holiday Reinforcement learning and PCA | 5 tasks | No new lecture.
+2026-11-27 CSAPP Priority / Buffer Reinforcement learning and PCA | 4 tasks | CSAPP priority + ML buffer day.
+2026-11-28 Practice / Lab Reinforcement learning and PCA | 5 tasks | Center a dataset, compute covariance, perform eigendecomposition (or SVD), sort components, and project.
+2026-11-29 Catch-up / PSet Reinforcement learning and PCA | 5 tasks | Finish PSet 4 and correct it.
+2026-11-30 CSAPP Priority / Buffer Transformers/LLM modern bridge | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-12-01 Modern Lecture Transformers/LLM modern bridge | 5 tasks | Use Fall 2025 transformer TA lecture as the first modern bridge.
+2026-12-02 CSAPP Priority / Buffer Transformers/LLM modern bridge | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-12-03 Modern Lecture Transformers/LLM modern bridge | 5 tasks | Use Fall 2025 Lecture 17.
+2026-12-04 CSAPP Priority / Buffer Transformers/LLM modern bridge | 4 tasks | CSAPP priority + ML buffer day.
+2026-12-05 Modern Lecture Transformers/LLM modern bridge | 5 tasks | Use Fall 2025 Lecture 18.
+2026-12-06 Modern / Ethics Transformers/LLM modern bridge | 5 tasks | Survey Fall 2025 Lectures 19-20; this is breadth, not theorem-heavy mastery.
+2026-12-07 CSAPP Priority / Buffer Final consolidation and mastery | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-12-08 Final Review Final consolidation and mastery | 5 tasks | Blank-page derivation: linear regression objective/gradient/normal equations.
+2026-12-09 CSAPP Priority / Buffer Final consolidation and mastery | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-12-10 Final Review Final consolidation and mastery | 5 tasks | Reconstruct margin geometry and the kernel trick.
+2026-12-11 CSAPP Priority / Buffer Final consolidation and mastery | 4 tasks | CSAPP priority + ML buffer day.
+2026-12-12 Final Review Final consolidation and mastery | 5 tasks | Write K-means objective and alternating updates.
+2026-12-13 Final Review Final consolidation and mastery | 5 tasks | From a blank page, write a two-layer network and scalar loss.
+2026-12-14 CSAPP Priority / Buffer Final consolidation and mastery | 3 tasks | CSAPP priority day: do not start a new CS229 lecture.
+2026-12-15 Final Review Final consolidation and mastery | 5 tasks | Define an MDP and derive Bellman expectation/optimality equations.
+2026-12-16 CSAPP Priority / Buffer Final consolidation and mastery | 3 tasks | CSAPP / university-coursework priority day; no new ML content.
+2026-12-17 Final Review Final consolidation and mastery | 5 tasks | Audit: conditional probability, Bayes rule, expectation, variance, covariance, Gaussian, likelihood/MLE.
+2026-12-18 CSAPP Priority / Buffer Final consolidation and mastery | 4 tasks | CSAPP priority + ML buffer day.
+2026-12-19 Capstone Final consolidation and mastery | 5 tasks | 90-minute closed-notes written test you create from prior mastery questions: derivations + conceptual comparisons + one probability + one RL problem.
+2026-12-20 Final Mastery Final consolidation and mastery | 5 tasks | Oral exam: explain linear regression, logistic regression, GLM, generative learning, SVM/kernels, trees/boosting, EM, NN/backprop, RL, PCA.
+[
+  {
+    "date": "2026-09-24",
+    "text": "PSet 0 + Lab 1 complete: linear regression and gradient descent"
+  },
+  {
+    "date": "2026-10-04",
+    "text": "PSet 1 + Lab 2 complete: logistic regression, Newton, GLM"
+  },
+  {
+    "date": "2026-10-18",
+    "text": "PSet 2 complete: GDA/NB, SVM, kernels, first learning-theory bridge"
+  },
+  {
+    "date": "2026-11-08",
+    "text": "PSet 3 + Lab 5 complete: EM/trees/boosting + neural-network/backprop implementation"
+  },
+  {
+    "date": "2026-11-29",
+    "text": "PSet 4 + Labs 6-7 complete: RL and PCA; classical CS229 core closed"
+  },
+  {
+    "date": "2026-12-06",
+    "text": "Modern bridge complete: transformers, LLM workflows, fairness/privacy survey"
+  },
+  {
+    "date": "2026-12-20",
+    "text": "Final integrated oral/written mastery complete"
+  }
+]

@@ -1,0 +1,2047 @@
+           Stanford CS229 / ML Fundamentals
+                      Daily execution plan | September 19 - December 20, 2026
+
+                   Designed to run in parallel with CSAPP / systems fundamentals
+
+ Deadline                                                       December 20, 2026
+
+ Cadence                                                        4 substantive ML blocks/week; Mon/Wed/Fri
+                                                                protected for CSAPP
+
+ Primary classical pedagogy                                     Autumn 2018 Andrew Ng lectures (A18) where they
+                                                                are strongest
+
+ Modern scope                                                   Fall 2025 CS229 structure (F25), especially trees,
+                                                                boosting, NN, RL, PCA, Transformers/LLMs
+
+ Math policy                                                    Just-in-time patches only: learn the math needed
+                                                                for the current ML topic, then return to ML
+
+Version legend
+• A18-Ln = Stanford CS229 Autumn 2018, Lecture n (Andrew Ng era/classical presentation).
+• S20-Ln = Stanford CS229 Summer 2020, Lecture n (used selectively for explicit theory review).
+• F25-Ln = Stanford CS229 Fall 2025, Lecture n (modern course spine).
+• F25 TA-Ln = Fall 2025 course-assistant lecture n.
+• PSet 0-4 = the Stanford-style problem-set sequence. If your source version numbers problems differently, map by topic;
+ the completion date in this plan stays fixed.
+• Lab 1-7 = personalized implementation labs in this plan, not necessarily official Stanford lab titles.
+
+Non-negotiable execution rule
+Lecture/Core -> Math Patch -> Practice/PSet/Lab -> Mastery/Stop Condition. Do not postpone the ML topic
+until you have "finished" an entire prerequisite subject. Patch only the math actually blocking the current
+lecture.
+
+
+
+
+                                              CS229 ML Fundamentals 2026 | 1
+Milestones
+Target date                                                       Milestone
+Sep 24                                                            PSet 0 + Lab 1 complete: linear regression and
+                                                                  gradient descent
+
+Oct 4                                                             PSet 1 + Lab 2 complete: logistic regression,
+                                                                  Newton, GLM
+
+Oct 18                                                            PSet 2 complete: GDA/NB, SVM, kernels, first
+                                                                  learning-theory bridge
+
+Nov 8                                                             PSet 3 + Lab 5 complete: EM/trees/boosting +
+                                                                  neural-network/backprop implementation
+
+Nov 29                                                            PSet 4 + Labs 6-7 complete: RL and PCA; classical
+                                                                  CS229 core closed
+
+Dec 6                                                             Modern bridge complete: transformers, LLM
+                                                                  workflows, fairness/privacy survey
+
+Dec 20                                                            Final integrated oral/written mastery complete
+
+
+Weekly rhythm
+• Tuesday: core lecture / concept block.
+• Thursday: second core lecture, math patch, or derivation block.
+• Saturday: practice, implementation, or new core material.
+• Sunday: PSet/lab closeout, consolidation, or lighter lecture.
+• Monday / Wednesday / Friday: CSAPP and university work take priority; no new ML lecture.
+
+
+
+
+                                              CS229 ML Fundamentals 2026 | 2
+Launch Weekend | Sep 19 - Sep 20, 2026
+Phase: Foundations: linear/logistic regression, GLMs
+
+
+Date                       Mode                           Exact work                        Done when
+
+Sat                        Math + Core                                                      Without notes, explain why
+Sep 19                     (2-3 h)                        • Use current CS229               -grad J is a descent direction
+                                                            supervised-learning notes       and derive the LMS
+                                                            around LMS/gradient             coordinate update.
+                                                            descent; do not restart the
+                                                            whole lecture.
+                                                          • Math patch: partial
+                                                            derivatives, gradient,
+                                                            directional derivative,
+                                                            derivative-as-linear-map
+                                                            notation DJ(theta)[v],
+                                                            multivariable chain rule.
+                                                          • Derive from scratch: d/d
+                                                            theta_j [1/2(h_theta(x)-y)^2]
+                                                            = (h_theta(x)-y)x_j.
+                                                          • Write the vector update
+                                                            theta <- theta -
+                                                            alpha(theta^T x-y)x.
+                                                          • Keep the convergence
+                                                            discussion at the level of
+                                                            descent direction today; do
+                                                            not turn this into a full
+                                                            optimization course.
+
+Sun                        Core Lecture                                                     Can translate the scalar
+Sep 20                     (1.5-2.5 h)                    • Watch Autumn 2018               hypothesis sum_j theta_j x_j
+                                                            Lecture 2 (Andrew Ng):          into matrix form X theta and
+                                                            supervised learning setup       check all dimensions.
+                                                            and linear regression.
+                                                          • Read the corresponding
+                                                            current CS229 supervised-
+                                                            learning notes only for the
+                                                            same topics.
+                                                          • Re-derive batch squared
+                                                            loss J(theta) = (1/2m)||X
+                                                            theta-y||^2.
+                                                          • Math patch: dimensions of
+                                                            X, theta, y; dot products,
+                                                            transpose, Euclidean norm.
+                                                          • Begin PSet 0 / prerequisite
+                                                            diagnostic; mark every
+                                                            math gap instead of
+                                                            detouring immediately.
+
+
+
+
+Week 1 | Sep 21 - Sep 27, 2026
+Phase: Foundations: linear/logistic regression, GLMs
+
+
+                                          CS229 ML Fundamentals 2026 | 3
+Date     Mode                           Exact work                       Done when
+
+Mon      CSAPP Priority / Buffer                                         CSAPP gets the main study
+Sep 21   (0-1 h ML)                     • CSAPP priority day: do not     block; ML remains warm
+                                          start a new CS229 lecture.     without expanding scope.
+                                        • ML maintenance only: 15-
+                                          20 minutes of spaced recall
+                                          from the previous
+                                          weekend; no notes for the
+                                          first pass.
+                                        • If anything from the
+                                          current phase
+                                          (Foundations:
+                                          linear/logistic regression,
+                                          GLMs) is unfinished, list it
+                                          as backlog but do not
+                                          exceed 30 minutes of ML
+                                          cleanup.
+
+Tue      Core Lecture                                                    Can derive the normal
+Sep 22   (1.5-2.5 h)                    • Finish the linear-regression   equations and state when the
+                                          material from A18-L2.          inverse formula is valid vs
+                                                                         when a
+                                        • Derive grad J(theta) =
+                                                                         pseudoinverse/iterative
+                                          (1/m)X^T(X theta-y).
+                                                                         method is needed.
+                                        • Derive the normal
+                                          equations X^T X theta =
+                                          X^T y from first-order
+                                          optimality.
+                                        • Math patch: positive
+                                          semidefinite matrices; why
+                                          X^T X is PSD;
+                                          rank/invertibility
+                                          conditions.
+                                        • Understand the Gaussian-
+                                          noise/MLE interpretation
+                                          of least squares at a
+                                          conceptual level.
+
+Wed      CSAPP Priority / Buffer                                         No new lecture opened; one
+Sep 23   (0-1 h ML)                     • CSAPP / university-            specific weakness may be
+                                          coursework priority day;       repaired without creating a
+                                          no new ML content.             prerequisite rabbit hole.
+                                        • Optional 20-minute math
+                                          flash review tied only to
+                                          the most recent CS229
+                                          topic.
+                                        • If a derivation from
+                                          Tuesday is still unclear,
+                                          repair exactly that
+                                          derivation and stop.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 4
+Thu      Practice / Lab                                                    Code runs without sklearn,
+Sep 24   (1.5-2.5 h)                      • Implement vectorized           gradient check passes, and
+                                            linear regression loss and     PSet 0 is complete.
+                                            gradient in NumPy.
+                                          • Implement batch gradient
+                                            descent and record the loss
+                                            each iteration.
+                                          • Verify the analytic gradient
+                                            with a finite-difference
+                                            gradient check on a tiny
+                                            synthetic dataset.
+                                          • Solve/finish PSet 0 or
+                                            equivalent prerequisite
+                                            diagnostic.
+                                          • Write a 5-line comparison:
+                                            gradient descent vs closed-
+                                            form least squares.
+
+Fri      CSAPP Priority / Buffer                                           Weekend starts with a clean
+Sep 25   (0-1 h ML)                       • CSAPP priority + ML buffer     next action and no hidden
+                                            day.                           ML backlog larger than one
+                                                                           session.
+                                          • Check whether
+                                            Tuesday/Thursday ML
+                                            blocks were actually
+                                            completed.
+                                          • If on schedule, take ML
+                                            fully off. If behind, use at
+                                            most 45-60 minutes to
+                                            finish the single highest-
+                                            priority unfinished item.
+                                          • Prepare the weekend by
+                                            writing the exact next
+                                            CS229 task; do not pre-
+                                            study it.
+
+Sat      Core Lecture                                                      Can explain why logistic
+Sep 26   (1.5-2.5 h)                      • Watch the weighted-least-      regression predicts a
+                                            squares and logistic-          probability while the
+                                            regression portion of          decision boundary is still
+                                            Autumn 2018 Lecture 3.         linear in x.
+                                          • Review sigmoid
+                                            sigma(z)=1/(1+e^{-z}) and
+                                            compute
+                                            sigma'(z)=sigma(z)(1-
+                                            sigma(z)).
+                                          • Understand classification
+                                            probability model P(y=1|
+                                            x;theta)=sigma(theta^T x).
+                                          • Math patch: exponentials,
+                                            logarithms, chain rule,
+                                            Bernoulli random variable.
+                                          • Start PSet 1: complete only
+                                            linear-regression/logistic-
+                                            regression questions
+                                            already covered.
+
+
+
+
+                          CS229 ML Fundamentals 2026 | 5
+Sun                        Math Patch                                                     Can write the logistic log-
+Sep 27                     (1.5-2.5 h)                   • Formal review: random          likelihood from the Bernoulli
+                                                           variable, PMF vs PDF,          model without looking it up
+                                                           joint/marginal/conditional     and explain every term.
+                                                           probability, independence.
+                                                         • Define likelihood L(theta;
+                                                           data) carefully and
+                                                           distinguish it from a
+                                                           probability distribution
+                                                           over theta.
+                                                         • Derive Bernoulli log-
+                                                           likelihood for logistic
+                                                           regression.
+                                                         • Show why maximizing
+                                                           likelihood and maximizing
+                                                           log-likelihood have the
+                                                           same optimizer.
+                                                         • Do 3 small probability
+                                                           manipulations by hand:
+                                                           Bayes rule,
+                                                           marginalization,
+                                                           conditional independence.
+
+
+
+
+Week 2 | Sep 28 - Oct 04, 2026
+Phase: Foundations: linear/logistic regression, GLMs
+
+
+Date                       Mode                          Exact work                       Done when
+
+Mon                        CSAPP Priority / Buffer                                        CSAPP gets the main study
+Sep 28                     (0-1 h ML)                    • CSAPP priority day: do not     block; ML remains warm
+                                                           start a new CS229 lecture.     without expanding scope.
+                                                         • ML maintenance only: 15-
+                                                           20 minutes of spaced recall
+                                                           from the previous
+                                                           weekend; no notes for the
+                                                           first pass.
+                                                         • If anything from the
+                                                           current phase
+                                                           (Foundations:
+                                                           linear/logistic regression,
+                                                           GLMs) is unfinished, list it
+                                                           as backlog but do not
+                                                           exceed 30 minutes of ML
+                                                           cleanup.
+
+
+
+
+                                         CS229 ML Fundamentals 2026 | 6
+Tue      Core Lecture                                                    Can explain why Newton
+Sep 29   (1.5-2.5 h)                    • Watch the Newton-method        uses curvature information
+                                          portion of Autumn 2018         and why one iteration is
+                                          Lecture 3; treat perceptron    more expensive than
+                                          as conceptual contrast, not    gradient descent.
+                                          a major branch.
+                                        • Derive 1D Newton update
+                                          from the second-order
+                                          Taylor approximation.
+                                        • Generalize to theta <- theta
+                                          - H^{-1} grad J(theta).
+                                        • Math patch: Hessian,
+                                          second-order Taylor
+                                          expansion, quadratic
+                                          approximation.
+                                        • Continue PSet 1 questions
+                                          on logistic
+                                          regression/Newton.
+
+Wed      CSAPP Priority / Buffer                                         No new lecture opened; one
+Sep 30   (0-1 h ML)                     • CSAPP / university-            specific weakness may be
+                                          coursework priority day;       repaired without creating a
+                                          no new ML content.             prerequisite rabbit hole.
+                                        • Optional 20-minute math
+                                          flash review tied only to
+                                          the most recent CS229
+                                          topic.
+                                        • If a derivation from
+                                          Tuesday is still unclear,
+                                          repair exactly that
+                                          derivation and stop.
+
+Thu      Core Lecture                                                    Can explain the GLM recipe:
+Oct 01   (1.5-2.5 h)                    • Finish the exponential-        choose response distribution,
+                                          family and GLM portion of      linear predictor, and
+                                          A18-L3; use Fall 2025          link/mean relationship.
+                                          Lecture 4 notes as the
+                                          modern topic map.
+                                        • Identify T(y), eta, a(eta),
+                                          and b(y) in the
+                                          exponential-family form.
+                                        • Connect Gaussian response
+                                          -> linear regression and
+                                          Bernoulli response ->
+                                          logistic regression.
+                                        • Math patch: expectation of
+                                          sufficient statistics;
+                                          canonical/natural
+                                          parameter intuition.
+                                        • Do not memorize every
+                                          distribution; focus on the
+                                          modeling pipeline.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 7
+Fri      CSAPP Priority / Buffer                                             Weekend starts with a clean
+Oct 02   (0-1 h ML)                        • CSAPP priority + ML buffer      next action and no hidden
+                                             day.                            ML backlog larger than one
+                                                                             session.
+                                           • Check whether
+                                             Tuesday/Thursday ML
+                                             blocks were actually
+                                             completed.
+                                           • If on schedule, take ML
+                                             fully off. If behind, use at
+                                             most 45-60 minutes to
+                                             finish the single highest-
+                                             priority unfinished item.
+                                           • Prepare the weekend by
+                                             writing the exact next
+                                             CS229 task; do not pre-
+                                             study it.
+
+Sat      Practice / PSet                                                     All covered-topic PSet 1
+Oct 03   (1.5-2.5 h)                       • Complete all PSet 1             questions have a complete
+                                             derivation questions whose      solution attempt and the
+                                             prerequisites are now           error log exists.
+                                             covered.
+                                           • Re-derive logistic-
+                                             regression gradient from
+                                             the Bernoulli log-
+                                             likelihood.
+                                           • Re-derive the Newton
+                                             update and identify
+                                             gradient/Hessian
+                                             dimensions.
+                                           • Make a one-page error log:
+                                             every
+                                             algebra/probability/calculu
+                                             s mistake made in PSet 1.
+                                           • If PSet numbering differs in
+                                             the version you use, treat
+                                             this as the first supervised-
+                                             learning problem set.
+
+
+
+
+                           CS229 ML Fundamentals 2026 | 8
+Sun                        Practice / Lab                                                    PSet 1 is finished and you can
+Oct 04                     (1.5-2.5 h)                      • Implement logistic loss/log-   implement logistic regression
+                                                              likelihood and its gradient    without relying on sklearn.
+                                                              from scratch.
+                                                            • Implement gradient
+                                                              descent; optionally
+                                                              implement Newton for a
+                                                              small low-dimensional
+                                                              dataset.
+                                                            • Compare convergence
+                                                              curves qualitatively; do not
+                                                              over-optimize the code.
+                                                            • Finish PSet 1 and correct
+                                                              mistakes using solutions
+                                                              only after a genuine
+                                                              attempt.
+                                                            • Archive a short mastery
+                                                              note: model -> likelihood ->
+                                                              objective -> gradient ->
+                                                              optimizer.
+
+
+
+
+Week 3 | Oct 05 - Oct 11, 2026
+Phase: Probabilistic models, SVM, learning theory
+
+
+Date                       Mode                             Exact work                       Done when
+
+Mon                        CSAPP Priority / Buffer                                           CSAPP gets the main study
+Oct 05                     (0-1 h ML)                       • CSAPP priority day: do not     block; ML remains warm
+                                                              start a new CS229 lecture.     without expanding scope.
+                                                            • ML maintenance only: 15-
+                                                              20 minutes of spaced recall
+                                                              from the previous
+                                                              weekend; no notes for the
+                                                              first pass.
+                                                            • If anything from the
+                                                              current phase
+                                                              (Probabilistic models, SVM,
+                                                              learning theory) is
+                                                              unfinished, list it as
+                                                              backlog but do not exceed
+                                                              30 minutes of ML cleanup.
+
+
+
+
+                                            CS229 ML Fundamentals 2026 | 9
+Tue      Core Lecture                                                     Can diagnose high bias vs
+Oct 06   (1.5-2.5 h)                     • Watch Autumn 2018              high variance from
+                                           Lecture 8 sections on bias-    train/validation behavior and
+                                           variance, regularization,      explain what lambda does.
+                                           and model selection; use
+                                           Fall 2025 Lecture 5 notes as
+                                           the modern checklist.
+                                         • Understand underfitting vs
+                                           overfitting and
+                                           training/validation/test
+                                           roles.
+                                         • Derive how L2
+                                           regularization changes the
+                                           linear-regression objective
+                                           and gradient.
+                                         • Math patch: norms, penalty
+                                           terms, hyperparameters,
+                                           train/validation leakage.
+                                         • Create a diagnostic
+                                           decision tree: high train
+                                           error vs high validation
+                                           gap.
+
+Wed      CSAPP Priority / Buffer                                          No new lecture opened; one
+Oct 07   (0-1 h ML)                      • CSAPP / university-            specific weakness may be
+                                           coursework priority day;       repaired without creating a
+                                           no new ML content.             prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+Thu      Math Patch                                                       Can interpret mean vector,
+Oct 08   (1.5-2.5 h)                     • Review expectation,            covariance matrix entries,
+                                           variance, covariance,          and the Gaussian exponent
+                                           covariance matrix,             geometrically.
+                                           correlation, and
+                                           independence distinctions.
+                                         • Study multivariate
+                                           Gaussian N(mu,Sigma) and
+                                           the quadratic form (x-
+                                           mu)^T Sigma^{-1}(x-mu).
+                                         • Math patch: symmetric PSD
+                                           matrices, determinant
+                                           intuition, Mahalanobis
+                                           distance.
+                                         • Compute a 2D covariance
+                                           matrix by hand from a tiny
+                                           dataset.
+                                         • Begin PSet 2 only if it
+                                           contains generative-
+                                           model/probability
+                                           questions.
+
+                        CS229 ML Fundamentals 2026 | 10
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Oct 09   (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                           day.                           ML backlog larger than one
+                                                                          session.
+                                         • Check whether
+                                           Tuesday/Thursday ML
+                                           blocks were actually
+                                           completed.
+                                         • If on schedule, take ML
+                                           fully off. If behind, use at
+                                           most 45-60 minutes to
+                                           finish the single highest-
+                                           priority unfinished item.
+                                         • Prepare the weekend by
+                                           writing the exact next
+                                           CS229 task; do not pre-
+                                           study it.
+
+Sat      Core Lecture                                                     Can explain exactly what
+Oct 10   (1.5-2.5 h)                     • Watch Autumn 2018              distributions GDA models
+                                           Lecture 5 material on          and how prediction is
+                                           Gaussian Discriminant          obtained from them.
+                                           Analysis and Naive Bayes;
+                                           align with Fall 2025
+                                           Lecture 6.
+                                         • Write the generative
+                                           factorization p(x,y)=p(x|
+                                           y)p(y).
+                                         • Use Bayes rule to obtain
+                                           p(y|x) conceptually.
+                                         • Compare generative
+                                           learning with logistic
+                                           regression as a
+                                           discriminative model.
+                                         • Math patch: class priors,
+                                           conditional density, log-
+                                           likelihood for Gaussian
+                                           parameters.
+
+Sun      Practice / PSet                                                  Can compute a toy Naive
+Oct 11   (1.5-2.5 h)                     • Work through Naive Bayes       Bayes prediction by hand
+                                           conditional-independence       and explain the conditional-
+                                           factorization.                 independence assumption.
+                                         • Derive why zero counts
+                                           cause zero likelihood and
+                                           how Laplace smoothing
+                                           fixes it.
+                                         • Complete the generative-
+                                           model portion of PSet 2.
+                                         • Do one tiny text-
+                                           classification example by
+                                           hand with smoothed
+                                           counts.
+                                         • Record which probability
+                                           rules you still use
+                                           mechanically rather than
+                                           conceptually.
+
+
+
+                        CS229 ML Fundamentals 2026 | 11
+Week 4 | Oct 12 - Oct 18, 2026
+Phase: Probabilistic models, SVM, learning theory
+
+
+Date                       Mode                           Exact work                       Done when
+
+Mon                        CSAPP Priority / Buffer                                         CSAPP gets the main study
+Oct 12                     (0-1 h ML)                      • CSAPP priority day: do not    block; ML remains warm
+                                                             start a new CS229 lecture.    without expanding scope.
+                                                           • ML maintenance only: 15-
+                                                             20 minutes of spaced recall
+                                                             from the previous
+                                                             weekend; no notes for the
+                                                             first pass.
+                                                           • If anything from the
+                                                             current phase
+                                                             (Probabilistic models, SVM,
+                                                             learning theory) is
+                                                             unfinished, list it as
+                                                             backlog but do not exceed
+                                                             30 minutes of ML cleanup.
+
+Tue                        Core Lecture                                                    Can derive the point-to-
+Oct 13                     (1.5-2.5 h)                     • Watch the SVM material        hyperplane distance and
+                                                             spanning Autumn 2018          explain why maximizing
+                                                             Lectures 6-7; use Fall 2025   margin improves robustness.
+                                                             Lecture 7 as the scope
+                                                             target.
+                                                           • Understand geometric
+                                                             margin, functional margin,
+                                                             and separating
+                                                             hyperplanes.
+                                                           • Math patch: projection,
+                                                             distance from point to
+                                                             hyperplane, norm scaling.
+                                                           • Write the hard-margin
+                                                             optimization problem and
+                                                             explain each constraint.
+                                                           • Do not yet obsess over the
+                                                             full KKT derivation.
+
+Wed                        CSAPP Priority / Buffer                                         No new lecture opened; one
+Oct 14                     (0-1 h ML)                      • CSAPP / university-           specific weakness may be
+                                                             coursework priority day;      repaired without creating a
+                                                             no new ML content.            prerequisite rabbit hole.
+                                                           • Optional 20-minute math
+                                                             flash review tied only to
+                                                             the most recent CS229
+                                                             topic.
+                                                           • If a derivation from
+                                                             Tuesday is still unclear,
+                                                             repair exactly that
+                                                             derivation and stop.
+
+
+
+
+                                          CS229 ML Fundamentals 2026 | 12
+Thu      Core Lecture                                                     Can explain the kernel trick
+Oct 15   (1.5-2.5 h)                     • Finish the kernel portion of   without saying only "it maps
+                                           Autumn 2018 Lecture 7.         data to higher dimensions."
+                                         • Understand feature map
+                                           phi(x) and K(x,z)=phi(x)^T
+                                           phi(z).
+                                         • Work out the feature map
+                                           behind a simple
+                                           polynomial kernel for a 2D
+                                           example.
+                                         • Understand why the
+                                           algorithm can operate
+                                           through inner products
+                                           without explicitly storing
+                                           phi(x).
+                                         • Continue the SVM/kernel
+                                           part of PSet 2.
+
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Oct 16   (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                           day.                           ML backlog larger than one
+                                                                          session.
+                                         • Check whether
+                                           Tuesday/Thursday ML
+                                           blocks were actually
+                                           completed.
+                                         • If on schedule, take ML
+                                           fully off. If behind, use at
+                                           most 45-60 minutes to
+                                           finish the single highest-
+                                           priority unfinished item.
+                                         • Prepare the weekend by
+                                           writing the exact next
+                                           CS229 task; do not pre-
+                                           study it.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 13
+Sat                        Math + Theory                                                    Can state what empirical risk
+Oct 17                     (1.5-2.5 h)                    • Review Lagrangian               is, what population risk is,
+                                                            intuition: objective,           and what uniform
+                                                            constraints, multipliers;       convergence is trying to
+                                                            only enough to read the         control.
+                                                            SVM dual/KKT story.
+                                                          • Watch/read Summer 2020
+                                                            Lecture 13 sections on
+                                                            empirical risk
+                                                            minimization and uniform
+                                                            convergence.
+                                                          • Learn the conceptual
+                                                            meaning of generalization
+                                                            gap and why finite-sample
+                                                            guarantees need
+                                                            assumptions.
+                                                          • Math patch: expectation of
+                                                            empirical loss; probability
+                                                            bounds at an
+                                                            intuitive/formal hybrid
+                                                            level.
+                                                          • Treat VC
+                                                            dimension/concentration
+                                                            inequalities as recognition-
+                                                            level today, not proof-
+                                                            heavy mastery.
+
+Sun                        Practice / PSet                                                  PSet 2 is complete and you
+Oct 18                     (1.5-2.5 h)                    • Finish PSet 2 or the            can verbally compare logistic
+                                                            corresponding                   regression, GDA, Naive
+                                                            generative/SVM                  Bayes, and SVM.
+                                                            assignment in your source
+                                                            version.
+                                                          • Redo one SVM-margin
+                                                            derivation without notes.
+                                                          • Redo one kernel feature-
+                                                            map exercise without
+                                                            notes.
+                                                          • Correct PSet mistakes and
+                                                            update the cumulative
+                                                            math error log.
+                                                          • 30-minute cumulative
+                                                            review: linear -> logistic ->
+                                                            GLM -> generative -> SVM.
+
+
+
+
+Week 5 | Oct 19 - Oct 25, 2026
+Phase: Unsupervised learning, trees, boosting
+
+
+Date                       Mode                          Exact work                         Done when
+
+
+
+
+                                         CS229 ML Fundamentals 2026 | 14
+Mon      CSAPP Priority / Buffer                                         CSAPP gets the main study
+Oct 19   (0-1 h ML)                      • CSAPP priority day: do not    block; ML remains warm
+                                           start a new CS229 lecture.    without expanding scope.
+                                         • ML maintenance only: 15-
+                                           20 minutes of spaced recall
+                                           from the previous
+                                           weekend; no notes for the
+                                           first pass.
+                                         • If anything from the
+                                           current phase
+                                           (Unsupervised learning,
+                                           trees, boosting) is
+                                           unfinished, list it as
+                                           backlog but do not exceed
+                                           30 minutes of ML cleanup.
+
+Tue      Core Lecture                                                    Can explain why K-means
+Oct 20   (1.5-2.5 h)                     • Watch Autumn 2018             uses hard assignments while
+                                           Lecture 13 for K-means,       GMM uses probabilistic/soft
+                                           mixture of Gaussians, and     assignments.
+                                           EM; use Fall 2025 Lecture 8
+                                           as the modern scope check.
+                                         • Write the K-means
+                                           distortion objective and
+                                           both alternating steps.
+                                         • Define a latent cluster
+                                           variable z for a Gaussian
+                                           mixture model.
+                                         • Understand p(x)=sum_z
+                                           p(x,z) by marginalization.
+                                         • Do not try to prove EM
+                                           monotonicity yet.
+
+Wed      CSAPP Priority / Buffer                                         No new lecture opened; one
+Oct 21   (0-1 h ML)                      • CSAPP / university-           specific weakness may be
+                                           coursework priority day;      repaired without creating a
+                                           no new ML content.            prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 15
+Thu      Math Patch                                                       Can explain, in words and
+Oct 22   (1.5-2.5 h)                    • Review convex/concave           equations, why EM alternates
+                                          functions and Jensen            E and M steps and why
+                                          inequality.                     likelihood does not decrease.
+                                        • Follow the standard EM
+                                          lower-bound construction
+                                          at least once line by line.
+                                        • Understand responsibilities
+                                          as posterior probabilities of
+                                          latent assignments.
+                                        • Connect E-step to
+                                          estimating latent-variable
+                                          distributions and M-step to
+                                          maximizing expected
+                                          complete-data log-
+                                          likelihood.
+                                        • Start PSet 3 if it includes
+                                          unsupervised-learning
+                                          material.
+
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Oct 23   (0-1 h ML)                     • CSAPP priority + ML buffer      next action and no hidden
+                                          day.                            ML backlog larger than one
+                                                                          session.
+                                        • Check whether
+                                          Tuesday/Thursday ML
+                                          blocks were actually
+                                          completed.
+                                        • If on schedule, take ML
+                                          fully off. If behind, use at
+                                          most 45-60 minutes to
+                                          finish the single highest-
+                                          priority unfinished item.
+                                        • Prepare the weekend by
+                                          writing the exact next
+                                          CS229 task; do not pre-
+                                          study it.
+
+
+
+
+                       CS229 ML Fundamentals 2026 | 16
+Sat                        Practice / Lab                                                     K-means implementation
+Oct 24                     (1.5-2.5 h)                       • Implement initialization,      converges and you can trace
+                                                               assignment, centroid-          one full iteration by hand.
+                                                               update, and convergence
+                                                               criterion.
+                                                             • Run on a small 2D
+                                                               synthetic dataset and
+                                                               inspect failure/sensitivity
+                                                               to initialization.
+                                                             • Measure the K-means
+                                                               objective after every
+                                                               iteration and verify it
+                                                               never increases under
+                                                               exact alternating steps.
+                                                             • Write one paragraph
+                                                               explaining local minima
+                                                               and why multiple restarts
+                                                               help.
+                                                             • No sklearn until after your
+                                                               own implementation
+                                                               works.
+
+Sun                        Practice / Lab                                                     EM likelihood is
+Oct 25                     (1.5-2.5 h)                       • Implement or hand-code a       nondecreasing numerically
+                                                               minimal 1D/2D GMM EM           and you understand every
+                                                               loop: responsibilities,        update at a conceptual level.
+                                                               means,
+                                                               variances/covariances,
+                                                               mixture weights.
+                                                             • Track log-likelihood across
+                                                               iterations.
+                                                             • Work the unsupervised
+                                                               portion of PSet 3.
+                                                             • Compare K-means limit
+                                                               intuition with small
+                                                               spherical-variance GMM
+                                                               intuition.
+                                                             • Stop before factor analysis;
+                                                               it is not core for this
+                                                               deadline.
+
+
+
+
+Week 6 | Oct 26 - Nov 01, 2026
+Phase: Unsupervised learning, trees, boosting
+
+
+Date                       Mode                             Exact work                        Done when
+
+
+
+
+                                            CS229 ML Fundamentals 2026 | 17
+Mon      CSAPP Priority / Buffer                                          CSAPP gets the main study
+Oct 26   (0-1 h ML)                      • CSAPP priority day: do not     block; ML remains warm
+                                           start a new CS229 lecture.     without expanding scope.
+                                         • ML maintenance only: 15-
+                                           20 minutes of spaced recall
+                                           from the previous
+                                           weekend; no notes for the
+                                           first pass.
+                                         • If anything from the
+                                           current phase
+                                           (Unsupervised learning,
+                                           trees, boosting) is
+                                           unfinished, list it as
+                                           backlog but do not exceed
+                                           30 minutes of ML cleanup.
+
+Tue      Core Lecture                                                     Can choose between two toy
+Oct 27   (1.5-2.5 h)                     • Use Fall 2025 Lecture 9 as     splits using impurity
+                                           primary content.               reduction and explain why
+                                                                          deep trees overfit.
+                                         • Understand recursive
+                                           partitioning, leaves,
+                                           prediction, overfitting, and
+                                           tree depth.
+                                         • Math patch: entropy/Gini
+                                           impurity and information
+                                           gain.
+                                         • Calculate entropy and one
+                                           candidate split by hand on
+                                           a tiny binary dataset.
+                                         • Relate trees to piecewise-
+                                           constant decision regions
+                                           rather than linear decision
+                                           boundaries.
+
+Wed      CSAPP Priority / Buffer                                          No new lecture opened; one
+Oct 28   (0-1 h ML)                      • CSAPP / university-            specific weakness may be
+                                           coursework priority day;       repaired without creating a
+                                           no new ML content.             prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 18
+Thu      Core Lecture                                                     Can explain why boosting
+Oct 29   (1.5-2.5 h)                     • Use Fall 2025 Lecture 10 as    focuses later learners on
+                                           primary content; consult       examples earlier learners
+                                           A18 tree-ensemble              handled poorly.
+                                           material only if useful.
+                                         • Understand weak learner,
+                                           weighted examples,
+                                           additive ensemble, and the
+                                           basic AdaBoost loop.
+                                         • Distinguish
+                                           bagging/random forests
+                                           from boosting at a
+                                           conceptual level.
+                                         • Math patch: weighted error
+                                           and exponential
+                                           reweighting intuition.
+                                         • Begin the tree/boosting
+                                           portion of PSet 3.
+
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Oct 30   (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                           day.                           ML backlog larger than one
+                                                                          session.
+                                         • Check whether
+                                           Tuesday/Thursday ML
+                                           blocks were actually
+                                           completed.
+                                         • If on schedule, take ML
+                                           fully off. If behind, use at
+                                           most 45-60 minutes to
+                                           finish the single highest-
+                                           priority unfinished item.
+                                         • Prepare the weekend by
+                                           writing the exact next
+                                           CS229 task; do not pre-
+                                           study it.
+
+Sat      Practice / Evaluation                                            Can choose an appropriate
+Oct 31   (1.5-2.5 h)                     • Study Fall 2025 TA             metric for imbalanced
+                                           evaluation-metrics             classification and justify why
+                                           material or equivalent         accuracy can be misleading.
+                                           notes.
+                                         • Formalize confusion
+                                           matrix, accuracy,
+                                           precision, recall, F1,
+                                           ROC/AUC intuition.
+                                         • Hand-compute metrics for
+                                           one imbalanced
+                                           classification example.
+                                         • Implement a tiny decision
+                                           stump and one or two
+                                           rounds of weighted
+                                           boosting if time permits.
+                                         • Add metric-selection rules
+                                           to your ML advice notes:
+                                           what failure does each
+                                           metric hide/reveal?
+
+
+
+                        CS229 ML Fundamentals 2026 | 19
+Sun                       Practice / PSet                                                   PSet 3 is at least halfway
+Nov 01                    (1.5-2.5 h)                    • Finish all PSet 3 questions      complete and there is no
+                                                           on unsupervised learning,        unresolved conceptual gap
+                                                           trees, boosting, or              from Weeks 1-6.
+                                                           evaluation that are
+                                                           currently covered.
+                                                         • Redo the weakest
+                                                           derivation from PSet 2/3.
+                                                         • 15-minute oral review:
+                                                           GMM vs K-means; bagging
+                                                           vs boosting; precision vs
+                                                           recall.
+                                                         • Update cumulative formula
+                                                           sheet, but keep it under 2
+                                                           pages.
+                                                         • Do not start neural
+                                                           networks early unless all
+                                                           current work is clean.
+
+
+
+
+Week 7 | Nov 02 - Nov 08, 2026
+Phase: Neural networks, backprop, ML advice
+
+
+Date                      Mode                          Exact work                          Done when
+
+Mon                       CSAPP Priority / Buffer                                           CSAPP gets the main study
+Nov 02                    (0-1 h ML)                     • CSAPP priority day: do not       block; ML remains warm
+                                                           start a new CS229 lecture.       without expanding scope.
+                                                         • ML maintenance only: 15-
+                                                           20 minutes of spaced recall
+                                                           from the previous
+                                                           weekend; no notes for the
+                                                           first pass.
+                                                         • If anything from the
+                                                           current phase (Neural
+                                                           networks, backprop, ML
+                                                           advice) is unfinished, list it
+                                                           as backlog but do not
+                                                           exceed 30 minutes of ML
+                                                           cleanup.
+
+
+
+
+                                        CS229 ML Fundamentals 2026 | 20
+Tue      Core Lecture                                                    Can write a two-layer
+Nov 03   (1.5-2.5 h)                     • Use Fall 2025 Lecture 11 as   network in equations and
+                                           primary content.              determine every
+                                                                         tensor/matrix shape.
+                                         • Understand neuron, affine
+                                           map z=W x+b, activation,
+                                           layers, forward
+                                           propagation, and matrix
+                                           shapes.
+                                         • Math patch: matrix
+                                           multiplication dimensions,
+                                           broadcasting vs
+                                           mathematics, elementwise
+                                           activation.
+                                         • Trace a 2-layer network
+                                           forward pass by hand with
+                                           tiny matrices.
+                                         • Relate a neural network to
+                                           composition of functions,
+                                           not to biological metaphor.
+
+Wed      CSAPP Priority / Buffer                                         No new lecture opened; one
+Nov 04   (0-1 h ML)                      • CSAPP / university-           specific weakness may be
+                                           coursework priority day;      repaired without creating a
+                                           no new ML content.            prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+Thu      Math Patch                                                      Can compute dL/dx through a
+Nov 05   (1.5-2.5 h)                     • Return to DJ notation,        small composition without
+                                           Jacobian matrices,            memorizing a backprop
+                                           gradients of scalar-valued    formula.
+                                           functions, and
+                                           composition.
+                                         • Derive the chain rule for
+                                           f(g(x)) in matrix/Jacobian
+                                           form.
+                                         • Understand vector-
+                                           Jacobian product intuition
+                                           used by reverse-mode
+                                           differentiation.
+                                         • Work 3 small
+                                           computational graphs by
+                                           hand.
+                                         • Keep the goal practical:
+                                           enough calculus to
+                                           understand backprop
+                                           exactly.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 21
+Fri                       CSAPP Priority / Buffer                                             Weekend starts with a clean
+Nov 06                    (0-1 h ML)                        • CSAPP priority + ML buffer      next action and no hidden
+                                                              day.                            ML backlog larger than one
+                                                                                              session.
+                                                            • Check whether
+                                                              Tuesday/Thursday ML
+                                                              blocks were actually
+                                                              completed.
+                                                            • If on schedule, take ML
+                                                              fully off. If behind, use at
+                                                              most 45-60 minutes to
+                                                              finish the single highest-
+                                                              priority unfinished item.
+                                                            • Prepare the weekend by
+                                                              writing the exact next
+                                                              CS229 task; do not pre-
+                                                              study it.
+
+Sat                       Core Lecture                                                        Can answer: "What exactly is
+Nov 07                    (1.5-2.5 h)                       • Use Fall 2025 Lecture 12 as     propagated backward?" with
+                                                              primary content.                derivatives/sensitivities, not
+                                                                                              just "errors."
+                                                            • Interpret backprop as
+                                                              repeated application of the
+                                                              chain rule from a scalar
+                                                              loss backward through the
+                                                              graph.
+                                                            • Distinguish parameters,
+                                                              activations, pre-activations,
+                                                              and upstream gradients.
+                                                            • Derive gradients for one
+                                                              fully connected layer with
+                                                              an activation.
+                                                            • Start neural-network
+                                                              questions in PSet 3/4
+                                                              depending on your source
+                                                              version.
+
+Sun                       Practice / Lab                                                      Gradient check passes, the
+Nov 08                    (1.5-2.5 h)                       • Implement forward pass,         tiny NN trains, and PSet 3 is
+                                                              scalar loss, backward pass,     complete.
+                                                              and parameter update with
+                                                              NumPy only.
+                                                            • Gradient-check at least one
+                                                              parameter tensor
+                                                              numerically.
+                                                            • Train on a tiny nonlinear
+                                                              toy classification problem.
+                                                            • Finish and correct PSet 3.
+                                                            • Write a concise backprop
+                                                              derivation using your own
+                                                              variable names.
+
+
+
+
+Week 8 | Nov 09 - Nov 15, 2026
+Phase: Neural networks, backprop, ML advice
+
+                                           CS229 ML Fundamentals 2026 | 22
+Date     Mode                          Exact work                          Done when
+
+Mon      CSAPP Priority / Buffer                                           CSAPP gets the main study
+Nov 09   (0-1 h ML)                     • CSAPP priority day: do not       block; ML remains warm
+                                          start a new CS229 lecture.       without expanding scope.
+                                        • ML maintenance only: 15-
+                                          20 minutes of spaced recall
+                                          from the previous
+                                          weekend; no notes for the
+                                          first pass.
+                                        • If anything from the
+                                          current phase (Neural
+                                          networks, backprop, ML
+                                          advice) is unfinished, list it
+                                          as backlog but do not
+                                          exceed 30 minutes of ML
+                                          cleanup.
+
+Tue      Theory                                                            Can explain why low training
+Nov 10   (1.5-2.5 h)                    • Use Summer 2020 Lectures         loss is not sufficient evidence
+                                          12-13 to make the classical      of good population
+                                          learning-theory foundation       performance.
+                                          explicit.
+                                        • Review bias-variance,
+                                          regularization, empirical
+                                          risk minimization, and
+                                          uniform convergence.
+                                        • Understand hypothesis
+                                          class complexity
+                                          conceptually; recognize VC
+                                          dimension without chasing
+                                          every theorem proof.
+                                        • Math patch: concentration
+                                          intuition and why training
+                                          error alone does not certify
+                                          generalization.
+                                        • Write the difference
+                                          between optimization
+                                          error,
+                                          estimation/generalization
+                                          error, and approximation
+                                          error.
+
+Wed      CSAPP Priority / Buffer                                           No new lecture opened; one
+Nov 11   (0-1 h ML)                     • CSAPP / university-              specific weakness may be
+                                          coursework priority day;         repaired without creating a
+                                          no new ML content.               prerequisite rabbit hole.
+                                        • Optional 20-minute math
+                                          flash review tied only to
+                                          the most recent CS229
+                                          topic.
+                                        • If a derivation from
+                                          Tuesday is still unclear,
+                                          repair exactly that
+                                          derivation and stop.
+
+
+
+
+                       CS229 ML Fundamentals 2026 | 23
+Thu      Core Lecture                                                     Given a bad model result, can
+Nov 12   (1.5-2.5 h)                     • Use Fall 2025 Lecture 13 as    propose what to measure
+                                           primary content;               next before proposing a new
+                                           optionally compare             architecture.
+                                           Andrew Ng 2018 practical-
+                                           advice material.
+                                         • Study error analysis,
+                                           train/dev/test methodology,
+                                           bias-vs-variance
+                                           interventions, dataset
+                                           mismatch, and baselines.
+                                         • Create a diagnostic
+                                           checklist for your own
+                                           future ML projects.
+                                         • Use examples from
+                                           synthetic-data/CV projects
+                                           when thinking through
+                                           failure modes, but keep
+                                           this session conceptual.
+                                         • Start PSet 4 if it covers
+                                           later-course material.
+
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Nov 13   (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                           day.                           ML backlog larger than one
+                                                                          session.
+                                         • Check whether
+                                           Tuesday/Thursday ML
+                                           blocks were actually
+                                           completed.
+                                         • If on schedule, take ML
+                                           fully off. If behind, use at
+                                           most 45-60 minutes to
+                                           finish the single highest-
+                                           priority unfinished item.
+                                         • Prepare the weekend by
+                                           writing the exact next
+                                           CS229 task; do not pre-
+                                           study it.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 24
+Sat                      Modern Bridge                                                    Can explain why convolution
+Nov 14                   (1.5-2.5 h)                      • Use the Fall 2025 deep-       is parameter-efficient and
+                                                            learning/ConvNet TA           translation-aware compared
+                                                            lecture as a bridge, not a    with a dense layer on images.
+                                                            full CV course.
+                                                          • Understand local receptive
+                                                            fields, convolution, weight
+                                                            sharing, channels, feature
+                                                            maps, pooling/stride at a
+                                                            high level.
+                                                          • Math patch only as needed:
+                                                            discrete convolution/cross-
+                                                            correlation indexing and
+                                                            tensor shapes.
+                                                          • Connect CNN inductive bias
+                                                            to images and to your
+                                                            graphics/computer-vision
+                                                            interests.
+                                                          • No large implementation
+                                                            required.
+
+Sun                      Review / PSet                                                    Can compare all major
+Nov 15                   (1.5-2.5 h)                      • Attempt all currently-        supervised methods in one
+                                                            covered PSet 4 questions.     coherent conceptual map.
+                                                          • Oral review without notes:
+                                                            linear regression, logistic
+                                                            regression, GLM, GDA/NB,
+                                                            SVM, trees/boosting, NN.
+                                                          • For every topic, state:
+                                                            model class, objective,
+                                                            optimizer/inference rule,
+                                                            main inductive bias.
+                                                          • Revisit at most two weak
+                                                            derivations; do not open a
+                                                            broad new side topic.
+                                                          • Prepare a one-page
+                                                            "supervised ML map."
+
+
+
+
+Week 9 | Nov 16 - Nov 22, 2026
+Phase: Reinforcement learning and PCA
+
+
+Date                     Mode                            Exact work                       Done when
+
+
+
+
+                                         CS229 ML Fundamentals 2026 | 25
+Mon      CSAPP Priority / Buffer                                          CSAPP gets the main study
+Nov 16   (0-1 h ML)                      • CSAPP priority day: do not     block; ML remains warm
+                                           start a new CS229 lecture.     without expanding scope.
+                                         • ML maintenance only: 15-
+                                           20 minutes of spaced recall
+                                           from the previous
+                                           weekend; no notes for the
+                                           first pass.
+                                         • If anything from the
+                                           current phase
+                                           (Reinforcement learning
+                                           and PCA) is unfinished, list
+                                           it as backlog but do not
+                                           exceed 30 minutes of ML
+                                           cleanup.
+
+Tue      Core Lecture                                                     Can derive the Bellman
+Nov 17   (1.5-2.5 h)                     • Use Fall 2025 Lecture 14 as    equation from one-step
+                                           scope; use Andrew 2018         decomposition of discounted
+                                           Lecture 16 if you want the     return.
+                                           classical derivation style.
+                                         • Define state, action,
+                                           transition model, reward,
+                                           discount, policy, return,
+                                           value function.
+                                         • Derive the Bellman
+                                           expectation equation and
+                                           Bellman optimality
+                                           equation.
+                                         • Connect Bellman
+                                           recurrence to dynamic
+                                           programming from
+                                           algorithms.
+                                         • Math patch: conditional
+                                           expectation over next
+                                           states.
+
+Wed      CSAPP Priority / Buffer                                          No new lecture opened; one
+Nov 18   (0-1 h ML)                      • CSAPP / university-            specific weakness may be
+                                           coursework priority day;       repaired without creating a
+                                           no new ML content.             prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 26
+Thu      Core Lecture                                                       Can distinguish planning
+Nov 19   (1.5-2.5 h)                       • Use Fall 2025 Lecture 15 as    with a known model from
+                                             the required scope; consult    learning values/policies from
+                                             Andrew 2018 Lectures 17-       sampled experience.
+                                             18 for classical detail.
+                                           • Understand value iteration
+                                             vs policy iteration vs
+                                             learning a model from
+                                             experience.
+                                           • Introduce value-function
+                                             approximation and Q-
+                                             function concepts.
+                                           • Keep Q-learning at
+                                             recognition/derivation
+                                             level if the current lecture
+                                             does not go deep.
+                                           • Continue RL portion of PSet
+                                             4.
+
+Fri      CSAPP Priority / Buffer                                            Weekend starts with a clean
+Nov 20   (0-1 h ML)                        • CSAPP priority + ML buffer     next action and no hidden
+                                             day.                           ML backlog larger than one
+                                                                            session.
+                                           • Check whether
+                                             Tuesday/Thursday ML
+                                             blocks were actually
+                                             completed.
+                                           • If on schedule, take ML
+                                             fully off. If behind, use at
+                                             most 45-60 minutes to
+                                             finish the single highest-
+                                             priority unfinished item.
+                                           • Prepare the weekend by
+                                             writing the exact next
+                                             CS229 task; do not pre-
+                                             study it.
+
+Sat      Practice / Lab                                                     Both algorithms recover a
+Nov 21   (1.5-2.5 h)                       • Implement a tiny finite        sensible policy and you can
+                                             MDP with explicit              explain every update from
+                                             transition probabilities and   the Bellman equation.
+                                             rewards.
+                                           • Implement value iteration
+                                             and extract a greedy policy.
+                                           • Implement or hand-
+                                             simulate policy iteration
+                                             for the same MDP.
+                                           • Compare convergence and
+                                             verify Bellman residuals
+                                             numerically.
+                                           • Do not add deep RL.
+
+
+
+
+                          CS229 ML Fundamentals 2026 | 27
+Sun                      Practice / PSet                                                 Can solve a small MDP on
+Nov 22                   (1.5-2.5 h)                    • Finish currently-covered       paper and PSet 4 RL work is
+                                                          RL questions in PSet 4.        up to date.
+                                                        • Solve one Bellman-
+                                                          equation problem
+                                                          completely by hand.
+                                                        • Explain policy evaluation,
+                                                          policy improvement, and
+                                                          value iteration without
+                                                          notes.
+                                                        • Update the cumulative
+                                                          error log.
+                                                        • Leave any advanced
+                                                          continuous-control
+                                                          material optional.
+
+
+
+
+Week 10 | Nov 23 - Nov 29, 2026
+Phase: Reinforcement learning and PCA
+
+
+Date                     Mode                          Exact work                        Done when
+
+Mon                      CSAPP Priority / Buffer                                         CSAPP gets the main study
+Nov 23                   (0-1 h ML)                     • CSAPP priority day: do not     block; ML remains warm
+                                                          start a new CS229 lecture.     without expanding scope.
+                                                        • ML maintenance only: 15-
+                                                          20 minutes of spaced recall
+                                                          from the previous
+                                                          weekend; no notes for the
+                                                          first pass.
+                                                        • If anything from the
+                                                          current phase
+                                                          (Reinforcement learning
+                                                          and PCA) is unfinished, list
+                                                          it as backlog but do not
+                                                          exceed 30 minutes of ML
+                                                          cleanup.
+
+
+
+
+                                       CS229 ML Fundamentals 2026 | 28
+Tue      Core Lecture                                                    Can explain PCA both as
+Nov 24   (1.5-2.5 h)                     • Use Andrew 2018 Lecture       maximum-variance
+                                           15 for classical PCA          projection and as low-
+                                           intuition; align with Fall    dimensional representation.
+                                           2025 Lecture 16 scope.
+                                         • Understand centering,
+                                           covariance matrix,
+                                           principal directions,
+                                           projection, and explained
+                                           variance.
+                                         • Math patch:
+                                           eigenvalues/eigenvectors of
+                                           symmetric matrices;
+                                           orthogonal bases.
+                                         • Derive why maximizing
+                                           projected variance yields
+                                           an eigenvector problem.
+                                         • Keep ICA/factor analysis
+                                           optional.
+
+Wed      CSAPP Priority / Buffer                                         No new lecture opened; one
+Nov 25   (0-1 h ML)                      • CSAPP / university-           specific weakness may be
+                                           coursework priority day;      repaired without creating a
+                                           no new ML content.            prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+Thu      Light Math / Holiday                                            Can project a centered point
+Nov 26   (1-1.5 h)                       • No new lecture.               onto the first principal
+                                                                         component and reconstruct
+                                         • Review spectral theorem
+                                                                         its rank-1 approximation.
+                                           for real symmetric
+                                           matrices at the level
+                                           needed for PCA.
+                                         • Compute
+                                           eigenvalues/eigenvectors of
+                                           one 2x2 covariance matrix
+                                           by hand.
+                                         • Review projection onto an
+                                           orthonormal basis.
+                                         • Cap this session at 60-90
+                                           minutes; protect
+                                           holiday/CSAPP workload.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 29
+Fri             CSAPP Priority / Buffer                                             Weekend starts with a clean
+Nov 27          (0-1 h ML)                        • CSAPP priority + ML buffer      next action and no hidden
+                                                    day.                            ML backlog larger than one
+                                                                                    session.
+                                                  • Check whether
+                                                    Tuesday/Thursday ML
+                                                    blocks were actually
+                                                    completed.
+                                                  • If on schedule, take ML
+                                                    fully off. If behind, use at
+                                                    most 45-60 minutes to
+                                                    finish the single highest-
+                                                    priority unfinished item.
+                                                  • Prepare the weekend by
+                                                    writing the exact next
+                                                    CS229 task; do not pre-
+                                                    study it.
+
+Sat             Practice / Lab                                                      From-scratch PCA matches
+Nov 28          (1.5-2.5 h)                       • Center a dataset, compute       library output up to
+                                                    covariance, perform             sign/subspace conventions.
+                                                    eigendecomposition (or
+                                                    SVD), sort components, and
+                                                    project.
+                                                  • Visualize or numerically
+                                                    inspect reconstruction
+                                                    error as dimension
+                                                    decreases.
+                                                  • Compare your result with a
+                                                    library PCA only after your
+                                                    own implementation is
+                                                    correct.
+                                                  • Finish PCA-related PSet 4
+                                                    questions.
+                                                  • Do not spend time on
+                                                    plotting polish.
+
+Sun             Catch-up / PSet                                                     PSet 4 is complete and the
+Nov 29          (1.5-2.5 h)                       • Finish PSet 4 and correct it.   classical CS229 core has no
+                                                                                    major unfinished
+                                                  • If behind, use today only
+                                                                                    assignment.
+                                                    for backlog; do not start
+                                                    LLM material until PSet 4 is
+                                                    closed.
+                                                  • Cumulative oral review:
+                                                    EM, backprop, Bellman,
+                                                    PCA.
+                                                  • Identify the three weakest
+                                                    mathematical prerequisites
+                                                    remaining.
+                                                  • Set Dec 1-20 as
+                                                    consolidation/modern-
+                                                    bridge mode rather than
+                                                    expanding scope.
+
+
+
+
+Week 11 | Nov 30 - Dec 06, 2026
+                                 CS229 ML Fundamentals 2026 | 30
+Phase: Transformers/LLM modern bridge
+
+
+Date                    Mode                          Exact work                       Done when
+
+Mon                     CSAPP Priority / Buffer                                        CSAPP gets the main study
+Nov 30                  (0-1 h ML)                     • CSAPP priority day: do not    block; ML remains warm
+                                                         start a new CS229 lecture.    without expanding scope.
+                                                       • ML maintenance only: 15-
+                                                         20 minutes of spaced recall
+                                                         from the previous
+                                                         weekend; no notes for the
+                                                         first pass.
+                                                       • If anything from the
+                                                         current phase
+                                                         (Transformers/LLM
+                                                         modern bridge) is
+                                                         unfinished, list it as
+                                                         backlog but do not exceed
+                                                         30 minutes of ML cleanup.
+
+Tue                     Modern Lecture                                                 Can trace Q, K, V -> attention
+Dec 01                  (1.5-2.5 h)                    • Use Fall 2025 transformer     scores -> softmax weights ->
+                                                         TA lecture as the first       weighted values with correct
+                                                         modern bridge.                shapes.
+                                                       • Understand
+                                                         token/embedding vectors,
+                                                         queries/keys/values, scaled
+                                                         dot-product attention, and
+                                                         multi-head idea
+                                                         conceptually.
+                                                       • Math patch: softmax,
+                                                         matrix shapes, dot-product
+                                                         similarity.
+                                                       • Compute a tiny single-head
+                                                         attention example by hand
+                                                         or in NumPy.
+                                                       • Do not study full
+                                                         transformer training
+                                                         systems yet.
+
+Wed                     CSAPP Priority / Buffer                                        No new lecture opened; one
+Dec 02                  (0-1 h ML)                     • CSAPP / university-           specific weakness may be
+                                                         coursework priority day;      repaired without creating a
+                                                         no new ML content.            prerequisite rabbit hole.
+                                                       • Optional 20-minute math
+                                                         flash review tied only to
+                                                         the most recent CS229
+                                                         topic.
+                                                       • If a derivation from
+                                                         Tuesday is still unclear,
+                                                         repair exactly that
+                                                         derivation and stop.
+
+
+
+
+                                      CS229 ML Fundamentals 2026 | 31
+Thu      Modern Lecture                                                  Can explain how maximum
+Dec 03   (1.5-2.5 h)                    • Use Fall 2025 Lecture 17.      likelihood/cross-entropy
+                                                                         from classical ML reappears
+                                        • Understand next-token
+                                                                         in language-model training.
+                                          prediction as supervised
+                                          learning over sequences,
+                                          embeddings, context,
+                                          transformer blocks, and
+                                          pretraining objective.
+                                        • Connect cross-entropy back
+                                          to likelihood/log-loss from
+                                          logistic regression.
+                                        • Write a conceptual pipeline
+                                          from tokens to logits to
+                                          softmax probabilities to
+                                          loss.
+                                        • Keep architecture details
+                                          subordinate to the ML
+                                          fundamentals connection.
+
+Fri      CSAPP Priority / Buffer                                         Weekend starts with a clean
+Dec 04   (0-1 h ML)                     • CSAPP priority + ML buffer     next action and no hidden
+                                          day.                           ML backlog larger than one
+                                                                         session.
+                                        • Check whether
+                                          Tuesday/Thursday ML
+                                          blocks were actually
+                                          completed.
+                                        • If on schedule, take ML
+                                          fully off. If behind, use at
+                                          most 45-60 minutes to
+                                          finish the single highest-
+                                          priority unfinished item.
+                                        • Prepare the weekend by
+                                          writing the exact next
+                                          CS229 task; do not pre-
+                                          study it.
+
+Sat      Modern Lecture                                                  Can classify a modern LLM
+Dec 05   (1.5-2.5 h)                    • Use Fall 2025 Lecture 18.      workflow as parameter
+                                                                         learning, retrieval/context
+                                        • Distinguish pretraining,
+                                                                         augmentation, or inference-
+                                          supervised fine-tuning,
+                                                                         time prompting.
+                                          prompting/in-context
+                                          learning, retrieval-
+                                          augmented generation, and
+                                          post-training/safety at a
+                                          systems-concept level.
+                                        • Write one sentence for
+                                          what changes parameters
+                                          vs what changes context
+                                          only.
+                                        • Connect retrieval to
+                                          representation/embedding
+                                          similarity.
+                                        • No implementation
+                                          required unless ahead of
+                                          schedule.
+
+
+
+
+                       CS229 ML Fundamentals 2026 | 32
+Sun                        Modern / Ethics                                                 Can articulate why a single
+Dec 06                     (1.5-2.5 h)                    • Survey Fall 2025 Lectures      aggregate metric can hide
+                                                            19-20; this is breadth, not    important model failures and
+                                                            theorem-heavy mastery.         why privacy/fairness are ML
+                                                                                           design constraints.
+                                                          • Understand that evaluation
+                                                            metrics and objectives
+                                                            encode choices and can
+                                                            differ across subgroups.
+                                                          • Recognize distribution
+                                                            shift, algorithmic bias,
+                                                            explainability, privacy, and
+                                                            basic tradeoffs.
+                                                          • Write 5 concrete questions
+                                                            you should ask before
+                                                            deploying a model.
+                                                          • Do not let this survey
+                                                            displace core review time.
+
+
+
+
+Week 12 | Dec 07 - Dec 13, 2026
+Phase: Final consolidation and mastery
+
+
+Date                       Mode                          Exact work                        Done when
+
+Mon                        CSAPP Priority / Buffer                                         CSAPP gets the main study
+Dec 07                     (0-1 h ML)                     • CSAPP priority day: do not     block; ML remains warm
+                                                            start a new CS229 lecture.     without expanding scope.
+                                                          • ML maintenance only: 15-
+                                                            20 minutes of spaced recall
+                                                            from the previous
+                                                            weekend; no notes for the
+                                                            first pass.
+                                                          • If anything from the
+                                                            current phase (Final
+                                                            consolidation and mastery)
+                                                            is unfinished, list it as
+                                                            backlog but do not exceed
+                                                            30 minutes of ML cleanup.
+
+
+
+
+                                         CS229 ML Fundamentals 2026 | 33
+Tue      Final Review                                                     Can reconstruct
+Dec 08   (1.5-2.5 h)                     • Blank-page derivation:         linear/logistic/GLM/GDA/NB
+                                           linear regression              foundations from memory
+                                           objective/gradient/normal      with only minor algebra
+                                           equations.                     slips.
+                                         • Blank-page derivation:
+                                           logistic likelihood and
+                                           gradient; explain Newton
+                                           method.
+                                         • Reconstruct GLM modeling
+                                           recipe and generative-vs-
+                                           discriminative distinction.
+                                         • Answer 10 short oral
+                                           questions without notes.
+                                         • Patch only the exact math
+                                           that fails during
+                                           reconstruction.
+
+Wed      CSAPP Priority / Buffer                                          No new lecture opened; one
+Dec 09   (0-1 h ML)                      • CSAPP / university-            specific weakness may be
+                                           coursework priority day;       repaired without creating a
+                                           no new ML content.             prerequisite rabbit hole.
+                                         • Optional 20-minute math
+                                           flash review tied only to
+                                           the most recent CS229
+                                           topic.
+                                         • If a derivation from
+                                           Tuesday is still unclear,
+                                           repair exactly that
+                                           derivation and stop.
+
+Thu      Final Review                                                     Can choose among classical
+Dec 10   (1.5-2.5 h)                     • Reconstruct margin             supervised methods for a
+                                           geometry and the kernel        hypothetical problem and
+                                           trick.                         justify the choice technically,
+                                                                          not by popularity.
+                                         • Explain decision trees and
+                                           boosting from first
+                                           principles.
+                                         • Work one imbalanced-
+                                           metrics example.
+                                         • Compare inductive biases:
+                                           linear/logistic, SVM/kernel,
+                                           tree/ensemble.
+                                         • Create one compact
+                                           comparison table for final
+                                           reference.
+
+
+
+
+                        CS229 ML Fundamentals 2026 | 34
+Fri             CSAPP Priority / Buffer                                          Weekend starts with a clean
+Dec 11          (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                                  day.                           ML backlog larger than one
+                                                                                 session.
+                                                • Check whether
+                                                  Tuesday/Thursday ML
+                                                  blocks were actually
+                                                  completed.
+                                                • If on schedule, take ML
+                                                  fully off. If behind, use at
+                                                  most 45-60 minutes to
+                                                  finish the single highest-
+                                                  priority unfinished item.
+                                                • Prepare the weekend by
+                                                  writing the exact next
+                                                  CS229 task; do not pre-
+                                                  study it.
+
+Sat             Final Review                                                     Can explain the entire
+Dec 12          (1.5-2.5 h)                     • Write K-means objective        unsupervised block without
+                                                  and alternating updates.       looking at lecture notes.
+                                                • Write GMM latent-variable
+                                                  model and EM E/M-step
+                                                  meanings.
+                                                • Explain Jensen/lower-
+                                                  bound intuition at a high
+                                                  level.
+                                                • Derive PCA maximum-
+                                                  variance eigenvector
+                                                  formulation.
+                                                • Redo the weakest
+                                                  unsupervised PSet/lab
+                                                  problem.
+
+Sun             Final Review                                                     Can derive a two-layer
+Dec 13          (1.5-2.5 h)                     • From a blank page, write a     backpropagation pass and
+                                                  two-layer network and          explain every derivative
+                                                  scalar loss.                   path.
+                                                • Derive backprop through
+                                                  both layers with the chain
+                                                  rule.
+                                                • Explain computational
+                                                  graph, Jacobian/VJP
+                                                  intuition, and why reverse
+                                                  mode is efficient for scalar
+                                                  loss.
+                                                • Review CNN and
+                                                  transformer bridges only
+                                                  after backprop is secure.
+                                                • Run the tiny-NN lab once
+                                                  more if implementation
+                                                  memory is weak.
+
+
+
+
+Week 13 | Dec 14 - Dec 20, 2026
+
+                               CS229 ML Fundamentals 2026 | 35
+Phase: Final consolidation and mastery
+
+
+Date                       Mode                           Exact work                       Done when
+
+Mon                        CSAPP Priority / Buffer                                         CSAPP gets the main study
+Dec 14                     (0-1 h ML)                      • CSAPP priority day: do not    block; ML remains warm
+                                                             start a new CS229 lecture.    without expanding scope.
+                                                           • ML maintenance only: 15-
+                                                             20 minutes of spaced recall
+                                                             from the previous
+                                                             weekend; no notes for the
+                                                             first pass.
+                                                           • If anything from the
+                                                             current phase (Final
+                                                             consolidation and mastery)
+                                                             is unfinished, list it as
+                                                             backlog but do not exceed
+                                                             30 minutes of ML cleanup.
+
+Tue                        Final Review                                                    Can move from MDP
+Dec 15                     (1.5-2.5 h)                     • Define an MDP and derive      definition to Bellman
+                                                             Bellman                       equation to a planning
+                                                             expectation/optimality        algorithm without notes.
+                                                             equations.
+                                                           • Reconstruct value iteration
+                                                             and policy iteration
+                                                             pseudocode.
+                                                           • Solve one small MDP by
+                                                             hand.
+                                                           • Explain Q-function and
+                                                             value approximation
+                                                             conceptually.
+                                                           • Connect Bellman
+                                                             recurrence to dynamic
+                                                             programming explicitly.
+
+Wed                        CSAPP Priority / Buffer                                         No new lecture opened; one
+Dec 16                     (0-1 h ML)                      • CSAPP / university-           specific weakness may be
+                                                             coursework priority day;      repaired without creating a
+                                                             no new ML content.            prerequisite rabbit hole.
+                                                           • Optional 20-minute math
+                                                             flash review tied only to
+                                                             the most recent CS229
+                                                             topic.
+                                                           • If a derivation from
+                                                             Tuesday is still unclear,
+                                                             repair exactly that
+                                                             derivation and stop.
+
+
+
+
+                                          CS229 ML Fundamentals 2026 | 36
+Thu      Final Review                                                     Every prerequisite concept
+Dec 17   (1.5-2.5 h)                     • Audit: conditional             can be defined, computed in
+                                           probability, Bayes rule,       a small example, and
+                                           expectation, variance,         connected to at least one
+                                           covariance, Gaussian,          CS229 model.
+                                           likelihood/MLE.
+                                         • Audit: gradient, Jacobian,
+                                           Hessian, chain rule, Taylor
+                                           approximation, PSD
+                                           matrices, eigenvectors.
+                                         • For every item, write one
+                                           ML context where it
+                                           appears.
+                                         • Repair only failed items
+                                           with short targeted
+                                           exercises.
+                                         • Do not start new math
+                                           chapters.
+
+Fri      CSAPP Priority / Buffer                                          Weekend starts with a clean
+Dec 18   (0-1 h ML)                      • CSAPP priority + ML buffer     next action and no hidden
+                                           day.                           ML backlog larger than one
+                                                                          session.
+                                         • Check whether
+                                           Tuesday/Thursday ML
+                                           blocks were actually
+                                           completed.
+                                         • If on schedule, take ML
+                                           fully off. If behind, use at
+                                           most 45-60 minutes to
+                                           finish the single highest-
+                                           priority unfinished item.
+                                         • Prepare the weekend by
+                                           writing the exact next
+                                           CS229 task; do not pre-
+                                           study it.
+
+Sat      Capstone                                                         At least 80% of core questions
+Dec 19   (3 h)                           • 90-minute closed-notes         are correct or repairable
+                                           written test you create        immediately, with no topic
+                                           from prior mastery             completely opaque.
+                                           questions: derivations +
+                                           conceptual comparisons +
+                                           one probability + one RL
+                                           problem.
+                                         • 60-minute correction
+                                           session using notes.
+                                         • Run one classical lab of
+                                           your choice from scratch
+                                           without copying old code
+                                           structure.
+                                         • Write a final list: strong /
+                                           usable / needs revisit
+                                           topics.
+                                         • Do not chase a perfect
+                                           score; identify the true
+                                           residual gaps.
+
+
+
+                        CS229 ML Fundamentals 2026 | 37
+Sun                            Final Mastery                                                    You can explain the 12 core
+Dec 20                         (2-3 h)                          • Oral exam: explain linear     mastery questions coherently
+                                                                  regression, logistic          and derive the main
+                                                                  regression, GLM,              algorithms without
+                                                                  generative learning,          depending on lecture notes.
+                                                                  SVM/kernels,
+                                                                  trees/boosting, EM,
+                                                                  NN/backprop, RL, PCA.
+                                                                • Modern bridge: explain
+                                                                  how classical
+                                                                  likelihood/representation/o
+                                                                  ptimization ideas connect
+                                                                  to transformers and LLM
+                                                                  training.
+                                                                • Review the error log and
+                                                                  mark what belongs in
+                                                                  future deep-learning/CV
+                                                                  study rather than CS229
+                                                                  remediation.
+                                                                • Archive final formula
+                                                                  sheet, labs, and PSet
+                                                                  corrections as the
+                                                                  completed ML
+                                                                  Fundamentals package.
+                                                                • Write the next-step
+                                                                  decision only after
+                                                                  declaring this plan
+                                                                  complete.
+
+
+
+
+December 20 final mastery questions
+1. What is a loss/objective function, and how is empirical risk related to training data?
+2. Why is the negative gradient a local descent direction, and what extra assumptions are needed for convergence?
+3. How do linear regression, logistic regression, and GLMs relate?
+4. What is likelihood, and how does MLE turn a probabilistic model into an optimization problem?
+5. What is the difference between generative and discriminative learning?
+6. What problem does regularization solve, and how does it interact with bias and variance?
+7. What is the geometric idea behind SVMs and the computational idea behind kernels?
+8. How do K-means, GMMs, and EM relate?
+9. What is backpropagation mathematically?
+10. Why does PCA reduce dimension using eigenvectors / singular vectors?
+11. How does the Bellman equation lead to value iteration and policy iteration?
+12. How do classical ideas such as likelihood, representation, optimization, and generalization reappear in transformers
+ and LLM training?
+
+
+Course-version mapping used to build this plan
+• Stanford CS229 Autumn 2018: L2 linear regression; L3 weighted least squares/logistic/Newton/exponential
+ family/GLMs; L5 GDA/Naive Bayes; L6-L7 SVM/kernels; L8 bias-variance/regularization; L9 tree ensembles; L10-L11
+ neural networks; L12 practical advice; L13 K-means/GMM/EM; L15 PCA; L16-L18 reinforcement learning.
+
+
+                                               CS229 ML Fundamentals 2026 | 38
+• Stanford CS229 Fall 2025 modern spine: L2 LMS; L3 logistic/Newton; L4 dataset split/exponential family/GLM; L5 bias-
+ variance/regularization; L6 GDA/Naive Bayes; L7 kernels/SVM; L8 K-means/GMM/EM; L9 trees; L10 boosting; L11-L12
+ neural networks/backprop; L13 ML advice; L14-L15 RL; L16 PCA; TA-L7 transformers; L17-L18 LLMs; L19-L20
+ fairness/bias/explainability/privacy.
+• Stanford CS229 Summer 2020 is used selectively for explicit learning-theory review because L12-L13 cleanly separate
+ bias/variance/regularization from ERM/uniform convergence.
+Planning note: The exact contents of Stanford problem sets vary by offering and some current materials are
+access-restricted. The plan therefore fixes PSet milestone dates and maps the work by topic rather than
+inventing question numbers. This is intentional.
+
+
+
+
+                                           CS229 ML Fundamentals 2026 | 39
+

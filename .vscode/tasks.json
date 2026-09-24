@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build current C file",
+            "type": "shell",
+            "command": "/bin/zsh",
+            "args": [
+                "${workspaceFolder}/.vscode/build_current_c.sh",
+                "${workspaceFolder}"
+            ],
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

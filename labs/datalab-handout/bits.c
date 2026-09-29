@@ -159,7 +159,6 @@ int bitXor(int x, int y) {
  */
 int tmin(void) {
   return 1 << 31;
-
 }
 //2
 /*
@@ -206,7 +205,9 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  
+  return !(x + (~0x30 + 1) >> 31) 
+  & 
+  !((0x39 + (~x + 1)) >> 31);
 }
 /* 
  * conditional - same as x ? y : z 
@@ -216,7 +217,8 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  return 2;
+  int mask = ~(!!x) + 1;
+  return (mask & y) | (~mask & z);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
@@ -226,7 +228,16 @@ int conditional(int x, int y, int z) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+  int xNonNeg = !(x>>31);
+  int yNonNeg = !(y>>31);
+  return (xNonNeg ^ yNonNeg) & !(y>>31) & !!(x>>31) 
+  | !(xNonNeg ^ yNonNeg) & !((y + (~x+1)) >>31);
+  
+  // Another solution with cleaner and clearer semantics from chat
+  // int differentSign = xNonNeg ^ yNonNeg; //(recall that a ^ a == 0, hence 1 means different sign, while 0 means same sign)
+  // int differentCase = differentSign & yNonNeg & (!xNonNeg);
+  // int sameCase = (!differentSign) &!((y + (~x+1)) >>31);
+  // return different | sameCase;
 }
 //4
 /* 
@@ -238,8 +249,16 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4 
  */
 int logicalNeg(int x) {
-  return 2;
+  x = x | (x >> 16);
+  x = x | (x >> 8);
+  x = x | (x >> 4);
+  x = x | (x >> 2);
+  x = x | (x >> 1);
+  return (~x) + 1;
+  
+  // another valid solution: return ((x | -x) >> 31) + 1;
 }
+
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
  *  Examples: howManyBits(12) = 5

@@ -180,7 +180,9 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  int mask = 0xAAAAAAAA;
+  int mask = 0xAA;
+  mask = mask | (mask << 8);
+  mask = mask | (mask << 16);
   return !((x&mask) ^ mask);
 }
 
@@ -205,7 +207,7 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return !(x + (~0x30 + 1) >> 31) 
+  return !((x + (~0x30 + 1)) >> 31) 
   & 
   !((0x39 + (~x + 1)) >> 31);
 }
@@ -230,8 +232,8 @@ int conditional(int x, int y, int z) {
 int isLessOrEqual(int x, int y) {
   int xNonNeg = !(x>>31);
   int yNonNeg = !(y>>31);
-  return (xNonNeg ^ yNonNeg) & !(y>>31) & !!(x>>31) 
-  | !(xNonNeg ^ yNonNeg) & !((y + (~x+1)) >>31);
+  return ((xNonNeg ^ yNonNeg) & !(y>>31) & !!(x>>31))
+  | (!(xNonNeg ^ yNonNeg) & !((y + (~x+1)) >>31));
   
   // Another solution with cleaner and clearer semantics from chat
   // int differentSign = xNonNeg ^ yNonNeg; //(recall that a ^ a == 0, hence 1 means different sign, while 0 means same sign)
@@ -254,9 +256,8 @@ int logicalNeg(int x) {
   x = x | (x >> 4);
   x = x | (x >> 2);
   x = x | (x >> 1);
-  return (~x) + 1;
-  
-  // another valid solution: return ((x | -x) >> 31) + 1;
+  return (~x) & 1;
+  // another valid solution: return ((x | (~x + 1)) >> 31) + 1;
 }
 
 /* howManyBits - return the minimum number of bits required to represent x in
@@ -272,24 +273,34 @@ int logicalNeg(int x) {
  *  Rating: 4
  */
 int howManyBits(int x) {
-  int sign = x >> 31;
+
+  int sign;
+  int b16;
+  int b8;
+  int b4;
+  int b2;
+  int b1;
+  int b0;
+
+  sign = x >> 31;
   x ^= sign;
-  int b16 = !!(x >> 16) << 4;
+
+  b16 = !!(x >> 16) << 4;
   x = x >> b16;
 
-  int b8 = !!(x >> 8) << 3;
+  b8 = !!(x >> 8) << 3;
   x = x >> b8;
 
-  int b4 = !!(x >> 4) << 2;
+  b4 = !!(x >> 4) << 2;
   x = x >> b4;
 
-  int b2 = !!(x >> 2) << 1;
+  b2 = !!(x >> 2) << 1;
   x = x >> b2;
 
-  int b1 = !!(x >> 1) ;
+  b1 = !!(x >> 1) ;
   x = x >> (b1);
 
-  int b0 = x;
+  b0 = x;
 
   // note that here, b0 is 0 if x is 0, and 1 if x is nonzero.
   return b16 + b8 + b4 + b2 + b1 + b0 + 1;
@@ -357,11 +368,16 @@ int floatFloat2Int(unsigned uf) {
   unsigned sign = uf >> 31;
   unsigned exp = (uf >> 23) & 0xFF;
   unsigned frac = uf & 0x7FFFFF;
+  unsigned mantissa;
+  int E;
+  int value;
   if(exp == 0xFF){
     // by convetion, return T_Min whenever casting INF or NAN from float to int
     return 0x80000000u;
   }
-  int E = exp - 127;
+  // casting is forbidden
+  E = exp;
+  E = E - 127;
   // if the exp is less than 127, the number is less than 1, so return 0 (including subnormal numbers)
   if(E < 0){
     return 0;
@@ -371,12 +387,12 @@ int floatFloat2Int(unsigned uf) {
     return 0x80000000u;
   }
   // else, if it's within the range of two's complemment, convert it into an integer
-  unsigned mantisa = frac | 0x800000;
-  unsigned value;
+  mantissa = frac | 0x800000;
+  value = 0;
   if(E >= 23){
-    value = mantisa << (E - 23);
+    value = mantissa << (E - 23);
   } else {
-    value = mantisa >> (23 - E);
+    value = mantissa >> (23 - E);
   }
   // Handle the E == 31 boundary here
   // if(E == 31){

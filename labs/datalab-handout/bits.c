@@ -265,14 +265,34 @@ int logicalNeg(int x) {
  *            howManyBits(298) = 10
  *            howManyBits(-5) = 4
  *            howManyBits(0)  = 1
- *            howManyBits(-1) = 1
+ *            howManyBits(-1) = 1 // 11
  *            howManyBits(0x80000000) = 32
  *  Legal ops: ! ~ & ^ | + << >>
  *  Max ops: 90
  *  Rating: 4
  */
 int howManyBits(int x) {
-  return 0;
+  int sign = x >> 31;
+  x ^= sign;
+  int b16 = !!(x >> 16) << 4;
+  x = x >> b16;
+
+  int b8 = !!(x >> 8) << 3;
+  x = x >> b8;
+
+  int b4 = !!(x >> 4) << 2;
+  x = x >> b4;
+
+  int b2 = !!(x >> 2) << 1;
+  x = x >> b2;
+
+  int b1 = !!(x >> 1) ;
+  x = x >> (b1);
+
+  int b0 = x;
+
+  // note that here, b0 is 0 if x is 0, and 1 if x is nonzero.
+  return b16 + b8 + b4 + b2 + b1 + b0 + 1;
 }
 //float
 /* 
@@ -287,7 +307,38 @@ int howManyBits(int x) {
  *   Rating: 4
  */
 unsigned floatScale2(unsigned uf) {
-  return 2;
+  // first extract the exponent, sign, and fraction of the input float
+  unsigned sign = uf & 0x80000000; // extract the sign bit
+  unsigned exp = (uf >> 23) & 0xFF; 
+  unsigned frac = uf & 0x7FFFFF;
+  // NaN / infinity case
+  if(exp == 0xFF){
+    return uf;
+  } else if(exp == 0){
+    // zero
+    if(frac == 0){
+      return uf;
+    } else {
+      //subnormal
+      // left shift the fraction by 1 
+      frac <<= 1;
+      // if the fraction overflows, increase the exponent by 1
+      if(frac & 0x800000){
+        exp = 1;
+        frac &= 0x7FFFFF; // clear the overflow bit
+      }
+      return sign | (exp << 23) | frac;
+    }
+  } else {
+    // normalized case
+    exp += 1;
+    // if the exponent overflows, clear the fraction and return infinity
+    if(exp == 0xFF){
+      frac = 0;
+    }
+    return sign | (exp << 23) | frac;
+  }
+  return uf;
 }
 /* 
  * floatFloat2Int - Return bit-level equivalent of expression (int) f
@@ -301,8 +352,47 @@ unsigned floatScale2(unsigned uf) {
  *   Max ops: 30
  *   Rating: 4
  */
+
 int floatFloat2Int(unsigned uf) {
-  return 2;
+  unsigned sign = uf >> 31;
+  unsigned exp = (uf >> 23) & 0xFF;
+  unsigned frac = uf & 0x7FFFFF;
+  if(exp == 0xFF){
+    // by convetion, return T_Min whenever casting INF or NAN from float to int
+    return 0x80000000u;
+  }
+  int E = exp - 127;
+  // if the exp is less than 127, the number is less than 1, so return 0 (including subnormal numbers)
+  if(E < 0){
+    return 0;
+  }
+  // note that two's complementary has range [-2^31, 2^31-1], so if E > 31, the number is ORR, return T_Min
+  if(E >= 31){ // note that the case E < 31 and E ==31 can be combined together
+    return 0x80000000u;
+  }
+  // else, if it's within the range of two's complemment, convert it into an integer
+  unsigned mantisa = frac | 0x800000;
+  unsigned value;
+  if(E >= 23){
+    value = mantisa << (E - 23);
+  } else {
+    value = mantisa >> (23 - E);
+  }
+  // Handle the E == 31 boundary here
+  // if(E == 31){
+  //   // if the sign is negatve, and frac is 0, then the value is -2^31
+  //   if(sign && !frac){
+  //     return 0x80000000u; // exactly -2^31
+  //   } else {
+  //     // otherwise, it's out of range, the question demands that we return 0x80000000u for out of range values
+  //     return 0x80000000u;
+  //   }
+  // }
+  if(sign){
+    return -value;
+  } else {
+    return value;
+  }
 }
 /* 
  * floatPower2 - Return bit-level equivalent of the expression 2.0^x
@@ -318,5 +408,7 @@ int floatFloat2Int(unsigned uf) {
  *   Rating: 4
  */
 unsigned floatPower2(int x) {
+  
+
     return 2;
 }

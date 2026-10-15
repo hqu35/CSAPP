@@ -118,7 +118,11 @@ int alloc_size;
  */
 void* alloc(int size) {
     //TODO: Your code goes in here.
-    if(size < 1){
+    if(size < 1 || heap_start == NULL){
+        return NULL;
+    }
+    // if assignment exceeds the freeSpace available, return NULL
+    if(size > alloc_size - (int)sizeof(blockHeader)){
         return NULL;
     }
     int addSize = size + 4;
